@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_pokemon_detail.xml -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F5F5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
+
+        <!-- Header con color de fondo -->
+        <View
+            android:id="@+id/headerBackground"
+            android:layout_width="0dp"
+            android:layout_height="280dp"
+            android:background="#DC0A2D"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Patrón de Pokeball en el fondo -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/pokeball_pattern"
+            android:alpha="0.1"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/headerBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/headerBackground"/>
+
+        <!-- Botón de regreso -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="Regresar"
+            android:tint="#FFFFFF"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Número del Pokémon -->
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#001"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:alpha="0.8"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Nombre del Pokémon -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bulbasaur"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="80dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Tipos del Pokémon -->
+        <LinearLayout
+            android:id="@+id/typesContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tvType1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grass"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/type_badge_background"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/tvType2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poison"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/type_badge_background"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <!-- Género (opcional) -->
+        <TextView
+            android:id="@+id/tvGenera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seed Pokémon"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:alpha="0.9"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/typesContainer"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Imagen del Pokémon -->
+        <ImageView
+            android:id="@+id/ivPokemon"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="70dp"
+            android:contentDescription="Pokemon Image"
+            android:elevation="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="24dp"/>
+
+        <!-- Card con información -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Descripción del Pokémon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon."
+                    android:textSize="15sp"
+                    android:textColor="#666666"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginTop="12dp"/>
+
+                <!-- Separador -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Pokédex Data -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pokédex Data"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+
+                <!-- Información en tabla -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp">
+
+                    <!-- Fila: Altura y Peso -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <!-- Peso -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/data_box_background"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@android:drawable/ic_menu_gallery"
+                                android:tint="#DC0A2D"/>
+
+                            <TextView
+                                android:id="@+id/tvWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="6.9 kg"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Weight"
+                                android:textSize="13sp"
+                                android:textColor="#999999"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="16dp"
+                            android:layout_height="wrap_content"/>
+
+                        <!-- Altura -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/data_box_background"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@android:drawable/ic_menu_upload"
+                                android:tint="#DC0A2D"/>
+
+                            <TextView
+                                android:id="@+id/tvHeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0.7 m"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Height"
+                                android:textSize="13sp"
+                                android:textColor="#999999"
+                                android:layout_marginTop="4dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Categoría -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Category"
+                            android:textSize="15sp"
+                            android:textColor="#999999"/>
+
+                        <TextView
+                            android:id="@+id/tvCategory"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Seed"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <!-- Habilidades -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Abilities"
+                            android:textSize="15sp"
+                            android:textColor="#999999"/>
+
+                        <TextView
+                            android:id="@+id/tvAbilities"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Overgrow, Chlorophyll"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <!-- Experiencia Base -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="Base Experience"
+                            android:textSize="15sp"
+                            android:textColor="#999999"/>
+
+                        <TextView
+                            android:id="@+id/tvBaseExp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="64"
+                            android:textSize="15sp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Separador -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Stats -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Base Stats"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+
+                <!-- HP -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="HP"
+                        android:textSize="15sp"
+                        android:textColor="#666666"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvHp"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="45"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="end"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressHp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:progress="45"
+                        android:max="255"
+                        android:progressTint="#FF5959"/>
+
+                    <TextView
+                        android:id="@+id/tvHpMax"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="end"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Attack -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Attack"
+                        android:textSize="15sp"
+                        android:textColor="#666666"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvAttack"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="49"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="end"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressAttack"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:progress="49"
+                        android:max="255"
+                        android:progressTint="#F5AC78"/>
+
+                    <TextView
+                        android:id="@+id/tvAttackMax"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="end"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Defense -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Defense"
+                        android:textSize="15sp"
+                        android:textColor="#666666"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvDefense"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="49"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="end"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressDefense"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:progress="49"
+                        android:max="255"
+                        android:progressTint="#9DB7F5"/>
+
+                    <TextView
+                        android:id="@+id/tvDefenseMax"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="end"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Sp. Attack -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sp. Atk"
+                        android:textSize="15sp"
+                        android:textColor="#666666"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvSpAttack"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="65"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="end"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressSpAttack"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:progress="65"
+                        android:max="255"
+                        android:progressTint="#FA92B2"/>
+
+                    <TextView
+                        android:id="@+id/tvSpAttackMax"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="end"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Sp. Defense -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sp. Def"
+                        android:textSize="15sp"
+                        android:textColor="#666666"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvSpDefense"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="65"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="end"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressSpDefense"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:progress="65"
+                        android:max="255"
+                        android:progressTint="#9DB7F5"/>
+
+                    <TextView
+                        android:id="@+id/tvSpDefenseMax"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="end"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Speed -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Speed"
+                        android:textSize="15sp"
+                        android:textColor="#666666"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvSpeed"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="45"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:gravity="end"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressSpeed"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:progress="45"
+                        android:max="255"
+                        android:progressTint="#FA92B2"/>
+
+                    <TextView
+                        android:id="@+id/tvSpeedMax"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="255"
+                        android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="end"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- ProgressBar de carga -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
