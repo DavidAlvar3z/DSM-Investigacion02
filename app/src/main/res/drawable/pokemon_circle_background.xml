@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/pokemon_circle_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Fondo blanco -->
+    <solid android:color="#FFFFFF"/>
+
+    <!-- Borde gris claro suave -->
+    <stroke
+        android:width="2dp"
+        android:color="#E0E0E0"/>
+
+    <!-- Tamaño del círculo -->
+    <size
+        android:width="80dp"
+        android:height="80dp"/>
+
+</shape>
