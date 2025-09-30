@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/pokeball_pattern.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Círculo exterior completo -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,100m-90,0a90,90 0,1,1 180,0a90,90 0,1,1 -180,0"/>
+
+    <!-- Mitad superior (roja cuando se use con tint) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,10 A90,90 0,0,1 190,100 L10,100 A90,90 0,0,1 100,10 Z"/>
+
+    <!-- Línea divisoria horizontal -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M10,95 L190,95 L190,105 L10,105 Z"/>
+
+    <!-- Círculo central exterior (blanco) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,100m-35,0a35,35 0,1,1 70,0a35,35 0,1,1 -70,0"/>
+
+    <!-- Círculo central medio (negro) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M100,100m-25,0a25,25 0,1,1 50,0a25,25 0,1,1 -50,0"/>
+
+    <!-- Círculo central interior (blanco) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,100m-15,0a15,15 0,1,1 30,0a15,15 0,1,1 -30,0"/>
+
+</vector>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/type_badge_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Fondo semi-transparente blanco -->
+    <solid android:color="#33FFFFFF"/>
+
+    <!-- Bordes redondeados -->
+    <corners android:radius="20dp"/>
+
+    <!-- Padding interno (opcional) -->
+    <padding
+        android:left="0dp"
+        android:top="0dp"
+        android:right="0dp"
+        android:bottom="0dp"/>
+
+</shape>
